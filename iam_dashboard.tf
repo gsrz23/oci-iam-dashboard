@@ -34,7 +34,7 @@ data "oci_log_analytics_namespaces" "iam_dashboard_namespaces" {
 }
 
 resource "oci_log_analytics_namespace" "iam_dashboard_namespace" {
-  count = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded ? 0 : 1
+#  count = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded ? 0 : 1
   namespace = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.namespace
   is_onboarded = true
   compartment_id = var.tenancy_ocid
