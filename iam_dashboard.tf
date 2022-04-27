@@ -59,7 +59,7 @@ resource "oci_log_analytics_log_analytics_import_custom_content" "iam_dashboard_
 # Create a log group with required parameters
 resource "oci_log_analytics_log_analytics_log_group" "iam_dashboard_log_group" {
 
-  count = count = (var.create_service_connector_audit  == true && data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded) ? 1 : 0
+  count = (var.create_service_connector_audit  == true && data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded) ? 1 : 0
   compartment_id             = var.iam_dashboard_compartmentid
   namespace                  = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.namespace
   display_name               = var.logging_analytics_log_group_name
