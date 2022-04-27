@@ -1,0 +1,1874 @@
+{
+  "dashboards": [
+    {
+      "compartment-id": "${var.iam_dashboard_compartmentid}",
+      "dashboard-id": "DASHID",
+      "data-config": [],
+      "defined-tags": {},
+      "description": "",
+      "display-name": "${var.iam_dashboard_domainname} Identity Domain",
+      "drilldown-config": [],
+      "freeform-tags": {},
+      "is-favorite": false,
+      "is-oob-dashboard": false,
+      "is-show-description": true,
+      "is-show-in-home": false,
+      "metadata-version": "2.0",
+      "nls": {},
+      "parameters-config": [
+        {
+          "column": 0,
+          "dataConfig": [],
+          "displayName": "Log Group Compartment",
+          "height": 1,
+          "localStorageKey": "log-analytics-loggroup-filter",
+          "name": "log-analytics-loggroup-filter",
+          "nls": {},
+          "parametersMap": {
+            "isStoreInLocalStorage": true
+          },
+          "row": 0,
+          "savedSearchId": "OOBSS-management-dashboard-filter-4a",
+          "state": "DEFAULT",
+          "uiConfig": {
+            "defaultWidth": 3,
+            "filterName": "log-analytics-loggroup-filter",
+            "internalKey": "OOBSS-management-dashboard-filter-4a",
+            "minWidth": 3,
+            "vizFilterType": "lxLogGroupDashFilterType"
+          },
+          "width": 3
+        },
+        {
+          "column": 0,
+          "dataConfig": [],
+          "displayName": "Entity",
+          "height": 1,
+          "localStorageKey": "log-analytics-entity-filter",
+          "name": "log-analytics-entity-filter",
+          "nls": {},
+          "parametersMap": {
+            "isStoreInLocalStorage": true
+          },
+          "row": 0,
+          "savedSearchId": "OOBSS-management-dashboard-filter-2a",
+          "state": "DEFAULT",
+          "uiConfig": {
+            "defaultWidth": 6,
+            "filterName": "log-analytics-entity-filter",
+            "internalKey": "OOBSS-management-dashboard-filter-2a",
+            "minWidth": 6,
+            "vizFilterType": "lxEntityDashFilterType"
+          },
+          "width": 6
+        },
+        {
+          "column": 0,
+          "dataConfig": [],
+          "displayName": "Log Set",
+          "height": 1,
+          "localStorageKey": "log-analytics-logset-filter",
+          "name": "log-analytics-logset-filter",
+          "nls": {},
+          "parametersMap": {
+            "isStoreInLocalStorage": true
+          },
+          "row": 0,
+          "savedSearchId": "OOBSS-management-dashboard-filter-3a",
+          "state": "DEFAULT",
+          "uiConfig": {
+            "defaultWidth": 6,
+            "filterName": "log-analytics-logset-filter",
+            "hidden": "$(window.logSetNotEnabled)",
+            "internalKey": "OOBSS-management-dashboard-filter-3a",
+            "minWidth": 6,
+            "vizFilterType": "lxLogSetDashFilterType"
+          },
+          "width": 0
+        },
+        {
+          "displayName": "Time",
+          "name": "time",
+          "src": "$(context.time)"
+        }
+      ],
+      "provider-id": "log-analytics",
+      "provider-name": "Logging Analytics",
+      "provider-version": "3.0.0",
+      "saved-searches": [
+        {
+          "compartment-id": "${var.iam_dashboard_compartmentid}",
+          "data-config": [],
+          "defined-tags": {},
+          "description": "New Users by Source Type (Actor Type)",
+          "display-name": "New Users by Source Type",
+          "drilldown-config": [],
+          "freeform-tags": {},
+          "id": "ocid1.managementsavedsearch.oc1..aaaaaaaa7ziobofzkkvm3ci4k7347pp3gjtuii7cewzarwxx4v6nuffpzn4a",
+          "is-oob-saved-search": false,
+          "metadata-version": "2.0",
+          "nls": {},
+          "parameters-config": [
+            {
+              "defaultFilterIds": [
+                "OOBSS-management-dashboard-filter-4a"
+              ],
+              "displayName": "Log Group Compartment",
+              "editUi": {
+                "inputType": "none"
+              },
+              "name": "log-analytics-log-group-compartment",
+              "required": true
+            },
+            {
+              "defaultFilterIds": [
+                "OOBSS-management-dashboard-filter-2a"
+              ],
+              "displayName": "Entity",
+              "editUi": {
+                "inputType": "none"
+              },
+              "name": "log-analytics-entity",
+              "required": true
+            },
+            {
+              "defaultFilterIds": [
+                "OOBSS-management-dashboard-filter-3a"
+              ],
+              "displayName": "Log Set",
+              "editUi": {
+                "inputType": "none"
+              },
+              "hidden": "$(window.logSetNotEnabled)",
+              "name": "log-analytics-log-set",
+              "required": true
+            }
+          ],
+          "provider-id": "log-analytics",
+          "provider-name": "Logging Analytics",
+          "provider-version": "3.0.0",
+          "screen-image": " ",
+          "type": "WIDGET_SHOW_IN_DASHBOARD",
+          "ui-config": {
+            "enableWidgetInApp": true,
+            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = ${var.iam_dashboard_domainname} and 'IAM EventID' = admin.user.create.success | stats count by 'IAM Actor Type'",
+            "scopeFilters": {
+              "Entity": {
+                "flags": {
+                  "IncludeDependents": true,
+                  "ScopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                },
+                "type": "Entity",
+                "values": []
+              },
+              "LogGroup": {
+                "flags": {
+                  "IncludeSubCompartments": true
+                },
+                "type": "LogGroup",
+                "values": [
+                  {
+                    "label": "cc52ef7b06gs (root)",
+                    "value": "${var.iam_dashboard_compartmentid}"
+                  }
+                ]
+              },
+              "filters": [
+                {
+                  "flags": {
+                    "includeSubCompartments": true
+                  },
+                  "type": "LogGroup",
+                  "values": [
+                    {
+                      "label": "cc52ef7b06gs (root)",
+                      "value": "${var.iam_dashboard_compartmentid}"
+                    }
+                  ]
+                },
+                {
+                  "flags": {
+                    "includeDependents": true,
+                    "scopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                  },
+                  "type": "Entity",
+                  "values": []
+                }
+              ],
+              "isGlobal": false
+            },
+            "showTitle": true,
+            "timeSelection": {
+              "timePeriod": "l7day"
+            },
+            "visualizationOptions": {
+              "customVizOpt": {
+                "primaryFieldIname": "mbody"
+              }
+            },
+            "visualizationType": "pie",
+            "vizType": "lxSavedSearchWidgetType"
+          },
+          "widget-template": "visualizations/chartWidgetTemplate.html",
+          "widget-v-m": "jet-modules/dashboards/widgets/lxSavedSearchWidget"
+        },
+        {
+          "compartment-id": "${var.iam_dashboard_compartmentid}",
+          "data-config": [],
+          "defined-tags": {},
+          "description": "",
+          "display-name": "Dormant Users (30 Days)",
+          "drilldown-config": [],
+          "freeform-tags": {},
+          "id": "ocid1.managementsavedsearch.oc1..aaaaaaaajjab5buyirt7xmskdq4dd4bwiwkx46yd5higy2dxll7gb4hbxv6a",
+          "is-oob-saved-search": false,
+          "metadata-version": "2.0",
+          "nls": {},
+          "parameters-config": [
+            {
+              "defaultFilterIds": [
+                "OOBSS-management-dashboard-filter-4a"
+              ],
+              "displayName": "Log Group Compartment",
+              "editUi": {
+                "inputType": "none"
+              },
+              "name": "log-analytics-log-group-compartment",
+              "required": true
+            },
+            {
+              "defaultFilterIds": [
+                "OOBSS-management-dashboard-filter-2a"
+              ],
+              "displayName": "Entity",
+              "editUi": {
+                "inputType": "none"
+              },
+              "name": "log-analytics-entity",
+              "required": true
+            },
+            {
+              "defaultFilterIds": [
+                "OOBSS-management-dashboard-filter-3a"
+              ],
+              "displayName": "Log Set",
+              "editUi": {
+                "inputType": "none"
+              },
+              "hidden": "$(window.logSetNotEnabled)",
+              "name": "log-analytics-log-set",
+              "required": true
+            }
+          ],
+          "provider-id": "log-analytics",
+          "provider-name": "Logging Analytics",
+          "provider-version": "3.0.0",
+          "screen-image": " ",
+          "type": "WIDGET_SHOW_IN_DASHBOARD",
+          "ui-config": {
+            "enableWidgetInApp": true,
+            "queryString": "Time between * and * and 'IAM Domain Name' = ${var.iam_dashboard_domainname} and 'IAM EventID' = sso.session.create.success | stats latest('Event End Time') as 'Last Login' by 'User Name' | where 'Last Login' < dateRelative(30day) | sort -'Last Login'",
+            "scopeFilters": {
+              "Entity": {
+                "flags": {
+                  "IncludeDependents": true,
+                  "ScopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                },
+                "type": "Entity",
+                "values": []
+              },
+              "LogGroup": {
+                "flags": {
+                  "IncludeSubCompartments": false
+                },
+                "type": "LogGroup",
+                "values": [
+                  {
+                    "label": "cc52ef7b06ashpmsignoff (root)",
+                    "value": "${var.iam_dashboard_compartmentid}"
+                  }
+                ]
+              },
+              "LogSet": {
+                "flags": {},
+                "type": "LogSet",
+                "values": []
+              },
+              "MetricCompartment": {
+                "flags": {},
+                "type": "MetricCompartment",
+                "values": []
+              },
+              "ResourceCompartment": {
+                "flags": {
+                  "IncludeSubCompartments": true
+                },
+                "type": "ResourceCompartment",
+                "values": [
+                  {
+                    "label": "cc52ef7b06ashpmsignoff (root)",
+                    "value": "${var.iam_dashboard_compartmentid}"
+                  }
+                ]
+              },
+              "filters": [
+                {
+                  "flags": {
+                    "IncludeSubCompartments": false
+                  },
+                  "type": "LogGroup",
+                  "values": [
+                    {
+                      "label": "cc52ef7b06ashpmsignoff (root)",
+                      "value": "${var.iam_dashboard_compartmentid}"
+                    }
+                  ]
+                },
+                {
+                  "flags": {},
+                  "type": "MetricCompartment",
+                  "values": []
+                },
+                {
+                  "flags": {
+                    "IncludeDependents": true,
+                    "ScopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                  },
+                  "type": "Entity",
+                  "values": []
+                },
+                {
+                  "flags": {},
+                  "type": "LogSet",
+                  "values": []
+                },
+                {
+                  "flags": {
+                    "IncludeSubCompartments": true
+                  },
+                  "type": "ResourceCompartment",
+                  "values": [
+                    {
+                      "label": "cc52ef7b06ashpmsignoff (root)",
+                      "value": "${var.iam_dashboard_compartmentid}"
+                    }
+                  ]
+                }
+              ],
+              "isGlobal": false
+            },
+            "showTitle": true,
+            "timeSelection": {
+              "timePeriod": "l7day"
+            },
+            "visualizationOptions": {
+              "customVizOpt": {
+                "LINK_CLASSIFY_SETTINGS": {
+                  "Dormant Users": {
+                    "chartHeight": 200,
+                    "chartType": [
+                      "trend"
+                    ],
+                    "classifyColorPalette": {
+                      "1": "default",
+                      "7": "func2_unique_udfs4",
+                      "8": "default",
+                      "9": "usrname"
+                    },
+                    "classifyColorPaletteCustom": {
+                      "7": {},
+                      "9": {}
+                    },
+                    "classifyFilters": {
+                      "classifyNarrowResults": [
+                        "on"
+                      ],
+                      "selectAllFilters": [
+                        "on"
+                      ],
+                      "selectedClassifyFilters": [
+                        6,
+                        7,
+                        8
+                      ],
+                      "showClassifyFilters": []
+                    },
+                    "colorColumn": 9,
+                    "descendingXAxis": [
+                      null
+                    ],
+                    "descendingYAxis": [
+                      null
+                    ],
+                    "drilldown": "on",
+                    "groupAlias": "Groups",
+                    "groupAliasS": "Group",
+                    "showAnomaly": [
+                      "off"
+                    ],
+                    "showBaseline": [
+                      "off"
+                    ],
+                    "showDimensions": [
+                      "on"
+                    ],
+                    "sizeColumn": 8,
+                    "swapXY": [
+                      "off"
+                    ],
+                    "zeroXAxis": [
+                      "on"
+                    ],
+                    "zeroYAxis": [
+                      "on"
+                    ]
+                  }
+                },
+                "LINK_SEARCH_SETTINGS": {
+                  "chartHeightVal": 200,
+                  "chartOptions": [
+                    "bar"
+                  ],
+                  "chartType": "bar",
+                  "chartWidthVal": 60,
+                  "columnAliases": {},
+                  "dashboardOptions": {
+                    "showAnalyzeTab": [],
+                    "showChartsTab": [],
+                    "showSummary": [],
+                    "showTable": [],
+                    "showTabs": [
+                      "on"
+                    ]
+                  },
+                  "groupAliasP": "Groups",
+                  "groupAliasS": "Group",
+                  "hiddenCharts": {
+                    "groupColumn": true
+                  },
+                  "hiddenClassifyCharts": {},
+                  "hiddenColumns": {
+                    "g_duration": true,
+                    "g_endepoch": true,
+                    "g_startepoch": true,
+                    "query_end_time": true,
+                    "query_start_time": true,
+                    "trend_interval": true,
+                    "trend_interval_unit": true
+                  },
+                  "highlightColumnStatus": {},
+                  "linkSummaryInput": "",
+                  "logAliasP": "Log Records",
+                  "mergeHighlightColumns": [],
+                  "showAllRegions": [],
+                  "showCombinedCharts": [
+                    "off"
+                  ],
+                  "showNonUnitRawData": [],
+                  "showStack": [
+                    "off"
+                  ],
+                  "showToolTips": [
+                    "on"
+                  ],
+                  "showUnitRawData": [],
+                  "smartGroup": [
+                    "off"
+                  ],
+                  "styleDefaults": {
+                    "lineType": "curved",
+                    "markerDisplayed": "on"
+                  }
+                }
+              }
+            },
+            "visualizationType": "summary_table",
+            "vizType": "lxSavedSearchWidgetType"
+          },
+          "widget-template": "visualizations/chartWidgetTemplate.html",
+          "widget-v-m": "jet-modules/dashboards/widgets/lxSavedSearchWidget"
+        },
+        {
+          "compartment-id": "${var.iam_dashboard_compartmentid}",
+          "data-config": [],
+          "defined-tags": {},
+          "description": "Successful Logins per day",
+          "display-name": "Successful Logins per day",
+          "drilldown-config": [],
+          "freeform-tags": {},
+          "id": "ocid1.managementsavedsearch.oc1..aaaaaaaa3idkib7u7h3ufzkxgkkfvhdrkurlusm74zsg7ctj757p4espwb2q",
+          "is-oob-saved-search": false,
+          "metadata-version": "2.0",
+          "nls": {},
+          "parameters-config": [],
+          "provider-id": "log-analytics",
+          "provider-name": "Logging Analytics",
+          "provider-version": "2.0",
+          "screen-image": " ",
+          "type": "WIDGET_SHOW_IN_DASHBOARD",
+          "ui-config": {
+            "enableWidgetInApp": true,
+            "internalKey": "SEARCHaaaaaaaaqobrfkz6rfxvcy52d2hdxnj3ufwke4tz2bndz5eb5jtxa45lqphq",
+            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM EventID' = sso.session.create.success and 'IAM Domain Name' = ${var.iam_dashboard_domainname} | fields -Entity, -'Entity Type', -'Host Name (Server)', -'Problem Priority', -Label, -'Log Source', 'User Name', -'IAM Domain Name' | timestats span = 1day count",
+            "scopeFilters": {
+              "Entity": {
+                "flags": {
+                  "IncludeDependents": true,
+                  "ScopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                },
+                "type": "Entity",
+                "values": []
+              },
+              "LogGroup": {
+                "flags": {
+                  "IncludeSubCompartments": true
+                },
+                "type": "LogGroup",
+                "values": [
+                  {
+                    "label": "cc52ef7b06gs (root)",
+                    "value": "${var.iam_dashboard_compartmentid}"
+                  }
+                ]
+              },
+              "filters": [
+                {
+                  "flags": {
+                    "includeSubCompartments": true
+                  },
+                  "type": "LogGroup",
+                  "values": [
+                    {
+                      "label": "cc52ef7b06gs (root)",
+                      "value": "${var.iam_dashboard_compartmentid}"
+                    }
+                  ]
+                },
+                {
+                  "flags": {
+                    "includeDependents": true,
+                    "scopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                  },
+                  "type": "Entity",
+                  "values": []
+                }
+              ],
+              "isGlobal": false
+            },
+            "showTitle": true,
+            "timeSelection": {
+              "numUnits": 1,
+              "timePeriod": "relative",
+              "units": "YEARS"
+            },
+            "visualizationOptions": {
+              "customVizOpt": {
+                "GEOMAP_SETTINGS": {
+                  "basemap": "bi_world_map_light",
+                  "clusterColor": "rgb(192, 192, 192)",
+                  "filterOnZoom": false,
+                  "isShowLegend": true,
+                  "lat": 2273030.9269876885,
+                  "lon": 0,
+                  "mapZoom": 1,
+                  "pointColor": "rgb(0, 0, 255)",
+                  "srid": 3857,
+                  "toggleClusters": false
+                },
+                "primaryFieldIname": "mbody"
+              }
+            },
+            "visualizationType": "table_histogram",
+            "vizType": "lxSavedSearchWidgetType"
+          },
+          "widget-template": "jet-modules/dashboards/widgets/lxSavedSearchWidget.html",
+          "widget-v-m": "jet-modules/dashboards/widgets/lxSavedSearchWidget"
+        },
+        {
+          "compartment-id": "${var.iam_dashboard_compartmentid}",
+          "data-config": [],
+          "defined-tags": {},
+          "description": "Unsuccessful Logins per day",
+          "display-name": "Unsuccessful Logins per day",
+          "drilldown-config": [],
+          "freeform-tags": {},
+          "id": "ocid1.managementsavedsearch.oc1..aaaaaaaamtaeg6xjacns7vg5shwgih4u4ugdej5rzfv66etgt7gdtp6mdhva",
+          "is-oob-saved-search": false,
+          "metadata-version": "2.0",
+          "nls": {},
+          "parameters-config": [],
+          "provider-id": "log-analytics",
+          "provider-name": "Logging Analytics",
+          "provider-version": "2.0",
+          "screen-image": " ",
+          "type": "WIDGET_SHOW_IN_DASHBOARD",
+          "ui-config": {
+            "enableWidgetInApp": true,
+            "internalKey": "SEARCHaaaaaaaavcqltlgtxccrimky2pfft6ihm2ltrnv3vxrv3iled7x4stjb4oza",
+            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM EventID' = sso.authentication.failure and 'IAM Domain Name' = ${var.iam_dashboard_domainname} | fields -Entity, -'Entity Type', -'Host Name (Server)', -'Problem Priority', -Label, -'Log Source', 'User Name', -'IAM Domain Name' | timestats span = 1day count",
+            "scopeFilters": {
+              "Entity": {
+                "flags": {
+                  "IncludeDependents": true,
+                  "ScopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                },
+                "type": "Entity",
+                "values": []
+              },
+              "LogGroup": {
+                "flags": {
+                  "IncludeSubCompartments": true
+                },
+                "type": "LogGroup",
+                "values": [
+                  {
+                    "label": "cc52ef7b06gs (root)",
+                    "value": "${var.iam_dashboard_compartmentid}"
+                  }
+                ]
+              },
+              "LogSet": {
+                "flags": {},
+                "type": "LogSet",
+                "values": []
+              },
+              "MetricCompartment": {
+                "flags": {},
+                "type": "MetricCompartment",
+                "values": []
+              },
+              "ResourceCompartment": {
+                "flags": {
+                  "IncludeSubCompartments": true
+                },
+                "type": "ResourceCompartment",
+                "values": [
+                  {
+                    "label": "cc52ef7b06gs (root)",
+                    "value": "${var.iam_dashboard_compartmentid}"
+                  }
+                ]
+              },
+              "filters": [
+                {
+                  "flags": {
+                    "includeSubCompartments": true
+                  },
+                  "type": "LogGroup",
+                  "values": [
+                    {
+                      "label": "cc52ef7b06gs (root)",
+                      "value": "${var.iam_dashboard_compartmentid}"
+                    }
+                  ]
+                },
+                {
+                  "flags": {},
+                  "type": "MetricCompartment",
+                  "values": []
+                },
+                {
+                  "flags": {
+                    "includeDependents": true,
+                    "scopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                  },
+                  "type": "Entity",
+                  "values": []
+                },
+                {
+                  "flags": {},
+                  "type": "LogSet",
+                  "values": []
+                },
+                {
+                  "flags": {
+                    "includeSubCompartments": true
+                  },
+                  "type": "ResourceCompartment",
+                  "values": [
+                    {
+                      "label": "cc52ef7b06gs (root)",
+                      "value": "${var.iam_dashboard_compartmentid}"
+                    }
+                  ]
+                }
+              ],
+              "isGlobal": false
+            },
+            "showTitle": true,
+            "timeSelection": {
+              "timePeriod": "l7day"
+            },
+            "visualizationOptions": {
+              "customVizOpt": {
+                "primaryFieldIname": "mbody"
+              }
+            },
+            "visualizationType": "table_histogram",
+            "vizType": "lxSavedSearchWidgetType"
+          },
+          "widget-template": "jet-modules/dashboards/widgets/lxSavedSearchWidget.html",
+          "widget-v-m": "jet-modules/dashboards/widgets/lxSavedSearchWidget"
+        },
+        {
+          "compartment-id": "${var.iam_dashboard_compartmentid}",
+          "data-config": [],
+          "defined-tags": {},
+          "description": "Geostats for Unsuccessful Logins",
+          "display-name": "Geostats for Unsuccessful Logins",
+          "drilldown-config": [],
+          "freeform-tags": {},
+          "id": "ocid1.managementsavedsearch.oc1..aaaaaaaaj4jxcldhoxqwxdyqtmoj42u3k4byv2go7wfznujwm3t7fclls4sa",
+          "is-oob-saved-search": false,
+          "metadata-version": "2.0",
+          "nls": {},
+          "parameters-config": [
+            {
+              "defaultFilterIds": [
+                "OOBSS-management-dashboard-filter-4a"
+              ],
+              "displayName": "Log Group Compartment",
+              "editUi": {
+                "inputType": "none"
+              },
+              "name": "log-analytics-log-group-compartment",
+              "required": true
+            },
+            {
+              "defaultFilterIds": [
+                "OOBSS-management-dashboard-filter-2a"
+              ],
+              "displayName": "Entity",
+              "editUi": {
+                "inputType": "none"
+              },
+              "name": "log-analytics-entity",
+              "required": true
+            },
+            {
+              "defaultFilterIds": [
+                "OOBSS-management-dashboard-filter-3a"
+              ],
+              "displayName": "Log Set",
+              "editUi": {
+                "inputType": "none"
+              },
+              "hidden": "$(window.logSetNotEnabled)",
+              "name": "log-analytics-log-set",
+              "required": true
+            }
+          ],
+          "provider-id": "log-analytics",
+          "provider-name": "Logging Analytics",
+          "provider-version": "3.0.0",
+          "screen-image": " ",
+          "type": "WIDGET_SHOW_IN_DASHBOARD",
+          "ui-config": {
+            "enableWidgetInApp": true,
+            "internalKey": "ocid1.managementsavedsearch.oc1..aaaaaaaaj4jxcldhoxqwxdyqtmoj42u3k4byv2go7wfznujwm3t7fclls4sa",
+            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM EventID' = sso.authentication.failure and 'IAM Domain Name' = default | geostats count as logrecords by 'IAM Client IP', 'User Name'",
+            "scopeFilters": {
+              "Entity": {
+                "flags": {
+                  "IncludeDependents": true,
+                  "ScopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                },
+                "type": "Entity",
+                "values": []
+              },
+              "LogGroup": {
+                "flags": {
+                  "IncludeSubCompartments": true
+                },
+                "type": "LogGroup",
+                "values": [
+                  {
+                    "label": "cc52ef7b06ashpmsignoff (root)",
+                    "value": "${var.iam_dashboard_compartmentid}"
+                  }
+                ]
+              },
+              "filters": [
+                {
+                  "flags": {
+                    "IncludeSubCompartments": true
+                  },
+                  "type": "LogGroup",
+                  "values": [
+                    {
+                      "label": "cc52ef7b06ashpmsignoff (root)",
+                      "value": "${var.iam_dashboard_compartmentid}"
+                    }
+                  ]
+                },
+                {
+                  "flags": {
+                    "IncludeDependents": true,
+                    "ScopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                  },
+                  "type": "Entity",
+                  "values": []
+                }
+              ],
+              "isGlobal": false
+            },
+            "showTitle": true,
+            "timeSelection": {
+              "timePeriod": "l7day"
+            },
+            "visualizationOptions": {
+              "customVizOpt": {
+                "GEOMAP_SETTINGS": {
+                  "basemap": "bi_world_map_light",
+                  "clusterColor": "rgb(192, 192, 192)",
+                  "filterOnZoom": false,
+                  "isShowLegend": false,
+                  "lat": 2273030.9269876885,
+                  "lon": 0,
+                  "mapZoom": 1,
+                  "pointColor": "rgb(0, 0, 255)",
+                  "srid": 3857,
+                  "toggleClusters": false
+                },
+                "primaryFieldIname": "mbody"
+              }
+            },
+            "visualizationType": "map",
+            "vizType": "lxSavedSearchWidgetType"
+          },
+          "widget-template": "visualizations/chartWidgetTemplate.html",
+          "widget-v-m": "jet-modules/dashboards/widgets/lxSavedSearchWidget"
+        },
+        {
+          "compartment-id": "${var.iam_dashboard_compartmentid}",
+          "data-config": [],
+          "defined-tags": {},
+          "description": "Password Recoveries per day",
+          "display-name": "Password Recoveries per day",
+          "drilldown-config": [],
+          "freeform-tags": {},
+          "id": "ocid1.managementsavedsearch.oc1..aaaaaaaaktop4ltwy4mi4swmhxksmurdvvip4s7v3zondf5qfylmv4yyzduq",
+          "is-oob-saved-search": false,
+          "metadata-version": "2.0",
+          "nls": {},
+          "parameters-config": [],
+          "provider-id": "log-analytics",
+          "provider-name": "Logging Analytics",
+          "provider-version": "2.0",
+          "screen-image": " ",
+          "type": "WIDGET_SHOW_IN_DASHBOARD",
+          "ui-config": {
+            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = ${var.iam_dashboard_domainname} and 'IAM EventID' in (admin.me.password.reset.request.success, admin.me.password.reset.success) | timestats span = 1day count",
+            "scopeFilters": {
+              "Entity": {
+                "flags": {
+                  "IncludeDependents": true,
+                  "ScopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                },
+                "type": "Entity",
+                "values": []
+              },
+              "LogGroup": {
+                "flags": {
+                  "IncludeSubCompartments": true
+                },
+                "type": "LogGroup",
+                "values": [
+                  {
+                    "label": "cc52ef7b06gs (root)",
+                    "value": "${var.iam_dashboard_compartmentid}"
+                  }
+                ]
+              },
+              "LogSet": {
+                "flags": {},
+                "type": "LogSet",
+                "values": []
+              },
+              "MetricCompartment": {
+                "flags": {},
+                "type": "MetricCompartment",
+                "values": []
+              },
+              "ResourceCompartment": {
+                "flags": {
+                  "IncludeSubCompartments": true
+                },
+                "type": "ResourceCompartment",
+                "values": [
+                  {
+                    "label": "cc52ef7b06gs (root)",
+                    "value": "${var.iam_dashboard_compartmentid}"
+                  }
+                ]
+              },
+              "filters": [
+                {
+                  "flags": {
+                    "includeSubCompartments": true
+                  },
+                  "type": "LogGroup",
+                  "values": [
+                    {
+                      "label": "cc52ef7b06gs (root)",
+                      "value": "${var.iam_dashboard_compartmentid}"
+                    }
+                  ]
+                },
+                {
+                  "flags": {},
+                  "type": "MetricCompartment",
+                  "values": []
+                },
+                {
+                  "flags": {
+                    "includeDependents": true,
+                    "scopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                  },
+                  "type": "Entity",
+                  "values": []
+                },
+                {
+                  "flags": {},
+                  "type": "LogSet",
+                  "values": []
+                },
+                {
+                  "flags": {
+                    "includeSubCompartments": true
+                  },
+                  "type": "ResourceCompartment",
+                  "values": [
+                    {
+                      "label": "cc52ef7b06gs (root)",
+                      "value": "${var.iam_dashboard_compartmentid}"
+                    }
+                  ]
+                }
+              ],
+              "isGlobal": false
+            },
+            "showTitle": true,
+            "timeSelection": {
+              "numUnits": 1,
+              "timePeriod": "relative",
+              "units": "MONTHS"
+            },
+            "visualizationOptions": {
+              "customVizOpt": {
+                "primaryFieldIname": "mbody"
+              }
+            },
+            "visualizationType": "records_histogram"
+          },
+          "widget-template": "jet-modules/dashboards/widgets/lxSavedSearchWidget.html",
+          "widget-v-m": "jet-modules/dashboards/widgets/lxSavedSearchWidget"
+        },
+        {
+          "compartment-id": "${var.iam_dashboard_compartmentid}",
+          "data-config": [],
+          "defined-tags": {},
+          "description": "Application Access Report",
+          "display-name": "Application Access",
+          "drilldown-config": [],
+          "freeform-tags": {},
+          "id": "ocid1.managementsavedsearch.oc1..aaaaaaaaxqeu4ph6mfheuglhvkscrjbn6ad3eajuv3xtmcn253ml3acqcz3a",
+          "is-oob-saved-search": false,
+          "metadata-version": "2.0",
+          "nls": {},
+          "parameters-config": [
+            {
+              "defaultFilterIds": [
+                "OOBSS-management-dashboard-filter-4a"
+              ],
+              "displayName": "Log Group Compartment",
+              "editUi": {
+                "inputType": "none"
+              },
+              "name": "log-analytics-log-group-compartment",
+              "required": true
+            },
+            {
+              "defaultFilterIds": [
+                "OOBSS-management-dashboard-filter-2a"
+              ],
+              "displayName": "Entity",
+              "editUi": {
+                "inputType": "none"
+              },
+              "name": "log-analytics-entity",
+              "required": true
+            },
+            {
+              "defaultFilterIds": [
+                "OOBSS-management-dashboard-filter-3a"
+              ],
+              "displayName": "Log Set",
+              "editUi": {
+                "inputType": "none"
+              },
+              "hidden": "$(window.logSetNotEnabled)",
+              "name": "log-analytics-log-set",
+              "required": true
+            }
+          ],
+          "provider-id": "log-analytics",
+          "provider-name": "Logging Analytics",
+          "provider-version": "3.0.0",
+          "screen-image": " ",
+          "type": "WIDGET_SHOW_IN_DASHBOARD",
+          "ui-config": {
+            "enableWidgetInApp": true,
+            "internalKey": "SEARCHaaaaaaaabpo6t3zwkglq7oy6y4fb52iqi2ou3k4ibyl6pv7bzsutwlwlqmma",
+            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = ${var.iam_dashboard_domainname} and 'IAM EventID' in (sso.authentication.failure, sso.session.create.success) | fields -Entity, -'Entity Type', -'Host Name (Server)', -'Problem Priority', -Label, -'Log Source', 'User Name', 'IAM EventID', 'IAM SSO RP' as Application, 'IAM Domain Name' | timestats count as logrecords by Application | sort -logrecords",
+            "scopeFilters": {
+              "Entity": {
+                "flags": {
+                  "IncludeDependents": true,
+                  "ScopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                },
+                "type": "Entity",
+                "values": []
+              },
+              "LogGroup": {
+                "flags": {
+                  "IncludeSubCompartments": true
+                },
+                "type": "LogGroup",
+                "values": [
+                  {
+                    "label": "cc52ef7b06gs (root)",
+                    "value": "${var.iam_dashboard_compartmentid}"
+                  }
+                ]
+              },
+              "LogSet": {
+                "flags": {},
+                "type": "LogSet",
+                "values": []
+              },
+              "MetricCompartment": {
+                "flags": {},
+                "type": "MetricCompartment",
+                "values": []
+              },
+              "ResourceCompartment": {
+                "flags": {
+                  "IncludeSubCompartments": true
+                },
+                "type": "ResourceCompartment",
+                "values": [
+                  {
+                    "label": "cc52ef7b06gs (root)",
+                    "value": "${var.iam_dashboard_compartmentid}"
+                  }
+                ]
+              },
+              "filters": [
+                {
+                  "flags": {
+                    "includeSubCompartments": true
+                  },
+                  "type": "LogGroup",
+                  "values": [
+                    {
+                      "label": "cc52ef7b06gs (root)",
+                      "value": "${var.iam_dashboard_compartmentid}"
+                    }
+                  ]
+                },
+                {
+                  "flags": {},
+                  "type": "MetricCompartment",
+                  "values": []
+                },
+                {
+                  "flags": {
+                    "includeDependents": true,
+                    "scopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                  },
+                  "type": "Entity",
+                  "values": []
+                },
+                {
+                  "flags": {},
+                  "type": "LogSet",
+                  "values": []
+                },
+                {
+                  "flags": {
+                    "includeSubCompartments": true
+                  },
+                  "type": "ResourceCompartment",
+                  "values": [
+                    {
+                      "label": "cc52ef7b06gs (root)",
+                      "value": "${var.iam_dashboard_compartmentid}"
+                    }
+                  ]
+                }
+              ],
+              "isGlobal": false
+            },
+            "showTitle": true,
+            "timeSelection": {
+              "numUnits": 14,
+              "timePeriod": "relative",
+              "units": "DAYS"
+            },
+            "visualizationOptions": {},
+            "visualizationType": "table_histogram",
+            "vizType": "lxSavedSearchWidgetType"
+          },
+          "widget-template": "visualizations/chartWidgetTemplate.html",
+          "widget-v-m": "jet-modules/dashboards/widgets/lxSavedSearchWidget"
+        },
+        {
+          "compartment-id": "${var.iam_dashboard_compartmentid}",
+          "data-config": [],
+          "defined-tags": {},
+          "description": "Application Role Privileges Report",
+          "display-name": "Application Role Privileges",
+          "drilldown-config": [],
+          "freeform-tags": {},
+          "id": "ocid1.managementsavedsearch.oc1..aaaaaaaampi5tnceumordnwmburcibgoerai7cqmukxtbmft2yrstyqqhvmq",
+          "is-oob-saved-search": false,
+          "metadata-version": "2.0",
+          "nls": {},
+          "parameters-config": [
+            {
+              "defaultFilterIds": [
+                "OOBSS-management-dashboard-filter-4a"
+              ],
+              "displayName": "Log Group Compartment",
+              "editUi": {
+                "inputType": "none"
+              },
+              "name": "log-analytics-log-group-compartment",
+              "required": true
+            },
+            {
+              "defaultFilterIds": [
+                "OOBSS-management-dashboard-filter-2a"
+              ],
+              "displayName": "Entity",
+              "editUi": {
+                "inputType": "none"
+              },
+              "name": "log-analytics-entity",
+              "required": true
+            },
+            {
+              "defaultFilterIds": [
+                "OOBSS-management-dashboard-filter-3a"
+              ],
+              "displayName": "Log Set",
+              "editUi": {
+                "inputType": "none"
+              },
+              "hidden": "$(window.logSetNotEnabled)",
+              "name": "log-analytics-log-set",
+              "required": true
+            }
+          ],
+          "provider-id": "log-analytics",
+          "provider-name": "Logging Analytics",
+          "provider-version": "3.0.0",
+          "screen-image": " ",
+          "type": "WIDGET_SHOW_IN_DASHBOARD",
+          "ui-config": {
+            "enableWidgetInApp": true,
+            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = ${var.iam_dashboard_domainname} and 'IAM EventID' in (admin.approle.add.member.success, admin.approle.remove.member.success) | fields -Entity, -'Entity Type', -'Host Name (Server)', -'Problem Priority', -Label, -'Log Source', -'IAM EventID', 'IAM Actor Name', 'IAM AppRole App' as App, 'IAM Admin Target Name', 'IAM Admin Target Type', 'IAM Domain Name', 'IAM Resource Name' as 'App Role' | timestats count as logrecords by App | sort -logrecords",
+            "scopeFilters": {
+              "Entity": {
+                "flags": {
+                  "IncludeDependents": true,
+                  "ScopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                },
+                "type": "Entity",
+                "values": []
+              },
+              "LogGroup": {
+                "flags": {
+                  "IncludeSubCompartments": true
+                },
+                "type": "LogGroup",
+                "values": [
+                  {
+                    "label": "cc52ef7b06gs (root)",
+                    "value": "${var.iam_dashboard_compartmentid}"
+                  }
+                ]
+              },
+              "LogSet": {
+                "flags": {},
+                "type": "LogSet",
+                "values": []
+              },
+              "MetricCompartment": {
+                "flags": {},
+                "type": "MetricCompartment",
+                "values": []
+              },
+              "ResourceCompartment": {
+                "flags": {
+                  "IncludeSubCompartments": true
+                },
+                "type": "ResourceCompartment",
+                "values": [
+                  {
+                    "label": "cc52ef7b06gs (root)",
+                    "value": "${var.iam_dashboard_compartmentid}"
+                  }
+                ]
+              },
+              "filters": [
+                {
+                  "flags": {
+                    "includeSubCompartments": true
+                  },
+                  "type": "LogGroup",
+                  "values": [
+                    {
+                      "label": "cc52ef7b06gs (root)",
+                      "value": "${var.iam_dashboard_compartmentid}"
+                    }
+                  ]
+                },
+                {
+                  "flags": {},
+                  "type": "MetricCompartment",
+                  "values": []
+                },
+                {
+                  "flags": {
+                    "includeDependents": true,
+                    "scopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                  },
+                  "type": "Entity",
+                  "values": []
+                },
+                {
+                  "flags": {},
+                  "type": "LogSet",
+                  "values": []
+                },
+                {
+                  "flags": {
+                    "includeSubCompartments": true
+                  },
+                  "type": "ResourceCompartment",
+                  "values": [
+                    {
+                      "label": "cc52ef7b06gs (root)",
+                      "value": "${var.iam_dashboard_compartmentid}"
+                    }
+                  ]
+                }
+              ],
+              "isGlobal": false
+            },
+            "showTitle": true,
+            "timeSelection": {
+              "timePeriod": "l7day"
+            },
+            "visualizationOptions": {},
+            "visualizationType": "table_histogram",
+            "vizType": "lxSavedSearchWidgetType"
+          },
+          "widget-template": "visualizations/chartWidgetTemplate.html",
+          "widget-v-m": "jet-modules/dashboards/widgets/lxSavedSearchWidget"
+        },
+        {
+          "compartment-id": "${var.iam_dashboard_compartmentid}",
+          "data-config": [],
+          "defined-tags": {},
+          "description": "New Users by Source",
+          "display-name": "New Users by Source",
+          "drilldown-config": [],
+          "freeform-tags": {},
+          "id": "ocid1.managementsavedsearch.oc1..aaaaaaaalyiq4b3q6lidhf3t3mydtxbex6z3prhc6r2ljw6a4345fyj7csnq",
+          "is-oob-saved-search": false,
+          "metadata-version": "2.0",
+          "nls": {},
+          "parameters-config": [],
+          "provider-id": "log-analytics",
+          "provider-name": "Logging Analytics",
+          "provider-version": "2.0",
+          "screen-image": " ",
+          "type": "WIDGET_SHOW_IN_DASHBOARD",
+          "ui-config": {
+            "enableWidgetInApp": true,
+            "internalKey": "ocid1.managementsavedsearch.oc1..aaaaaaaalyiq4b3q6lidhf3t3mydtxbex6z3prhc6r2ljw6a4345fyj7csnq",
+            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = ${var.iam_dashboard_domainname} and 'IAM EventID' = admin.user.create.success | fields 'User Name' as 'Created By' | stats count by 'IAM Actor Name'",
+            "scopeFilters": {
+              "Entity": {
+                "flags": {
+                  "IncludeDependents": true,
+                  "ScopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                },
+                "type": "Entity",
+                "values": []
+              },
+              "LogGroup": {
+                "flags": {
+                  "IncludeSubCompartments": true
+                },
+                "type": "LogGroup",
+                "values": [
+                  {
+                    "label": "cc52ef7b06ashpmsignoff (root)",
+                    "value": "${var.iam_dashboard_compartmentid}"
+                  }
+                ]
+              },
+              "filters": [
+                {
+                  "flags": {
+                    "IncludeSubCompartments": true
+                  },
+                  "type": "LogGroup",
+                  "values": [
+                    {
+                      "label": "cc52ef7b06ashpmsignoff (root)",
+                      "value": "${var.iam_dashboard_compartmentid}"
+                    }
+                  ]
+                },
+                {
+                  "flags": {
+                    "IncludeDependents": true,
+                    "ScopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                  },
+                  "type": "Entity",
+                  "values": []
+                }
+              ],
+              "isGlobal": false
+            },
+            "showTitle": true,
+            "timeSelection": {
+              "timePeriod": "l8hr"
+            },
+            "visualizationOptions": {
+              "customVizOpt": {
+                "primaryFieldIname": "mbody"
+              }
+            },
+            "visualizationType": "pie",
+            "vizType": "lxSavedSearchWidgetType"
+          },
+          "widget-template": "jet-modules/dashboards/widgets/lxSavedSearchWidget.html",
+          "widget-v-m": "jet-modules/dashboards/widgets/lxSavedSearchWidget"
+        },
+        {
+          "compartment-id": "${var.iam_dashboard_compartmentid}",
+          "data-config": [],
+          "defined-tags": {},
+          "description": "New Users per day",
+          "display-name": "New Users per day",
+          "drilldown-config": [],
+          "freeform-tags": {},
+          "id": "ocid1.managementsavedsearch.oc1..aaaaaaaaauawjakrnwysbgy4zzolu5utdptlofqvxx46llijv6kjc2v5tpoq",
+          "is-oob-saved-search": false,
+          "metadata-version": "2.0",
+          "nls": {},
+          "parameters-config": [],
+          "provider-id": "log-analytics",
+          "provider-name": "Logging Analytics",
+          "provider-version": "2.0",
+          "screen-image": " ",
+          "type": "WIDGET_SHOW_IN_DASHBOARD",
+          "ui-config": {
+            "enableWidgetInApp": true,
+            "internalKey": "ocid1.managementsavedsearch.oc1..aaaaaaaaauawjakrnwysbgy4zzolu5utdptlofqvxx46llijv6kjc2v5tpoq",
+            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM EventID' = admin.user.create.success and 'IAM Domain Name' = ${var.iam_dashboard_domainname} | fields -Entity, -'Entity Type', -'Host Name (Server)', -'Problem Priority', -Label, -'Log Source', 'IAM Resource Name' as 'New User' | timestats span = 1day count",
+            "scopeFilters": {
+              "Entity": {
+                "flags": {
+                  "IncludeDependents": true,
+                  "ScopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                },
+                "type": "Entity",
+                "values": []
+              },
+              "LogGroup": {
+                "flags": {
+                  "IncludeSubCompartments": true
+                },
+                "type": "LogGroup",
+                "values": [
+                  {
+                    "label": "cc52ef7b06ashpmsignoff (root)",
+                    "value": "${var.iam_dashboard_compartmentid}"
+                  }
+                ]
+              },
+              "filters": [
+                {
+                  "flags": {
+                    "IncludeSubCompartments": true
+                  },
+                  "type": "LogGroup",
+                  "values": [
+                    {
+                      "label": "cc52ef7b06ashpmsignoff (root)",
+                      "value": "${var.iam_dashboard_compartmentid}"
+                    }
+                  ]
+                },
+                {
+                  "flags": {
+                    "IncludeDependents": true,
+                    "ScopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                  },
+                  "type": "Entity",
+                  "values": []
+                }
+              ],
+              "isGlobal": false
+            },
+            "showTitle": true,
+            "timeSelection": {
+              "timePeriod": "l7day"
+            },
+            "visualizationOptions": {
+              "customVizOpt": {
+                "primaryFieldIname": "mbody"
+              }
+            },
+            "visualizationType": "table_histogram",
+            "vizType": "lxSavedSearchWidgetType"
+          },
+          "widget-template": "jet-modules/dashboards/widgets/lxSavedSearchWidget.html",
+          "widget-v-m": "jet-modules/dashboards/widgets/lxSavedSearchWidget"
+        },
+        {
+          "compartment-id": "${var.iam_dashboard_compartmentid}",
+          "data-config": [],
+          "defined-tags": {},
+          "description": "Events Generated by Users",
+          "display-name": "Events Generated by Users",
+          "drilldown-config": [],
+          "freeform-tags": {},
+          "id": "ocid1.managementsavedsearch.oc1..aaaaaaaaqo7q7s4jjb5iaxklmsvy3bgbwyeqg27qldnqvr566yiiar7l4tjq",
+          "is-oob-saved-search": false,
+          "metadata-version": "2.0",
+          "nls": {},
+          "parameters-config": [
+            {
+              "defaultFilterIds": [
+                "OOBSS-management-dashboard-filter-4a"
+              ],
+              "displayName": "Log Group Compartment",
+              "editUi": {
+                "inputType": "none"
+              },
+              "name": "log-analytics-log-group-compartment",
+              "required": true
+            },
+            {
+              "defaultFilterIds": [
+                "OOBSS-management-dashboard-filter-2a"
+              ],
+              "displayName": "Entity",
+              "editUi": {
+                "inputType": "none"
+              },
+              "name": "log-analytics-entity",
+              "required": true
+            },
+            {
+              "defaultFilterIds": [
+                "OOBSS-management-dashboard-filter-3a"
+              ],
+              "displayName": "Log Set",
+              "editUi": {
+                "inputType": "none"
+              },
+              "hidden": "$(window.logSetNotEnabled)",
+              "name": "log-analytics-log-set",
+              "required": true
+            }
+          ],
+          "provider-id": "log-analytics",
+          "provider-name": "Logging Analytics",
+          "provider-version": "3.0.0",
+          "screen-image": " ",
+          "type": "WIDGET_SHOW_IN_DASHBOARD",
+          "ui-config": {
+            "enableWidgetInApp": true,
+            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = ${var.iam_dashboard_domainname} and 'IAM Actor Type' = user and 'IAM EventID' like 'admin*success' | stats count as 'events generated by users' by 'User Name'",
+            "scopeFilters": {
+              "Entity": {
+                "flags": {
+                  "IncludeDependents": true,
+                  "ScopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                },
+                "type": "Entity",
+                "values": []
+              },
+              "LogGroup": {
+                "flags": {
+                  "IncludeSubCompartments": true
+                },
+                "type": "LogGroup",
+                "values": [
+                  {
+                    "label": "cc52ef7b06gs (root)",
+                    "value": "${var.iam_dashboard_compartmentid}"
+                  }
+                ]
+              },
+              "LogSet": {
+                "flags": {},
+                "type": "LogSet",
+                "values": []
+              },
+              "filters": [
+                {
+                  "flags": {
+                    "includeSubCompartments": true
+                  },
+                  "type": "LogGroup",
+                  "values": [
+                    {
+                      "label": "cc52ef7b06gs (root)",
+                      "value": "${var.iam_dashboard_compartmentid}"
+                    }
+                  ]
+                },
+                {
+                  "flags": {
+                    "includeDependents": true,
+                    "scopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                  },
+                  "type": "Entity",
+                  "values": []
+                },
+                {
+                  "flags": {},
+                  "type": "LogSet",
+                  "values": []
+                }
+              ],
+              "isGlobal": false
+            },
+            "showTitle": true,
+            "timeSelection": {
+              "numUnits": 1,
+              "timePeriod": "relative",
+              "units": "YEARS"
+            },
+            "visualizationOptions": {
+              "customVizOpt": {
+                "primaryFieldIname": "mbody"
+              }
+            },
+            "visualizationType": "treemap",
+            "vizType": "lxSavedSearchWidgetType"
+          },
+          "widget-template": "visualizations/chartWidgetTemplate.html",
+          "widget-v-m": "jet-modules/dashboards/widgets/lxSavedSearchWidget"
+        },
+        {
+          "compartment-id": "${var.iam_dashboard_compartmentid}",
+          "data-config": [],
+          "defined-tags": {},
+          "description": "Account Locks per day",
+          "display-name": "Account Locks per day",
+          "drilldown-config": [],
+          "freeform-tags": {},
+          "id": "ocid1.managementsavedsearch.oc1..aaaaaaaaoaiprdzduajze6px7lgm2feoxqtluviuzx3uhimhcyn464nsqjaa",
+          "is-oob-saved-search": false,
+          "metadata-version": "2.0",
+          "nls": {},
+          "parameters-config": [],
+          "provider-id": "log-analytics",
+          "provider-name": "Logging Analytics",
+          "provider-version": "2.0",
+          "screen-image": " ",
+          "type": "WIDGET_SHOW_IN_DASHBOARD",
+          "ui-config": {
+            "enableWidgetInApp": true,
+            "internalKey": "ocid1.managementsavedsearch.oc1..aaaaaaaaoaiprdzduajze6px7lgm2feoxqtluviuzx3uhimhcyn464nsqjaa",
+            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = ${var.iam_dashboard_domainname} and 'IAM EventID' = admin.me.locked.success | fields -Entity, -'Entity Type', -'Host Name (Server)', -'Problem Priority', -Label, -'Log Source', 'IAM Resource Name' as 'Locked User' | timestats span = 1day count",
+            "scopeFilters": {
+              "Entity": {
+                "flags": {
+                  "IncludeDependents": true,
+                  "ScopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                },
+                "type": "Entity",
+                "values": []
+              },
+              "LogGroup": {
+                "flags": {
+                  "IncludeSubCompartments": true
+                },
+                "type": "LogGroup",
+                "values": [
+                  {
+                    "label": "cc52ef7b06ashpmsignoff (root)",
+                    "value": "${var.iam_dashboard_compartmentid}"
+                  }
+                ]
+              },
+              "filters": [
+                {
+                  "flags": {
+                    "IncludeSubCompartments": true
+                  },
+                  "type": "LogGroup",
+                  "values": [
+                    {
+                      "label": "cc52ef7b06ashpmsignoff (root)",
+                      "value": "${var.iam_dashboard_compartmentid}"
+                    }
+                  ]
+                },
+                {
+                  "flags": {
+                    "IncludeDependents": true,
+                    "ScopeCompartmentId": "${var.iam_dashboard_compartmentid}"
+                  },
+                  "type": "Entity",
+                  "values": []
+                }
+              ],
+              "isGlobal": false
+            },
+            "showTitle": true,
+            "timeSelection": {
+              "timePeriod": "l7day"
+            },
+            "visualizationOptions": {
+              "customVizOpt": {
+                "primaryFieldIname": "mbody"
+              }
+            },
+            "visualizationType": "table_histogram",
+            "vizType": "lxSavedSearchWidgetType"
+          },
+          "widget-template": "jet-modules/dashboards/widgets/lxSavedSearchWidget.html",
+          "widget-v-m": "jet-modules/dashboards/widgets/lxSavedSearchWidget"
+        }
+      ],
+      "screen-image": "todo: provide value[mandatory]",
+      "tiles": [
+        {
+          "column": 0,
+          "data-config": [],
+          "display-name": "Successful Logins per day",
+          "drilldown-config": [],
+          "height": 4,
+          "nls": {},
+          "parameters-map": {
+            "log-analytics-entity": "$(dashboard.params.log-analytics-entity-filter)",
+            "log-analytics-log-group-compartment": "$(dashboard.params.log-analytics-loggroup-filter)"
+          },
+          "row": 0,
+          "saved-search-id": "ocid1.managementsavedsearch.oc1..aaaaaaaa3idkib7u7h3ufzkxgkkfvhdrkurlusm74zsg7ctj757p4espwb2q",
+          "state": "DEFAULT",
+          "ui-config": {},
+          "width": 6
+        },
+        {
+          "column": 6,
+          "data-config": [],
+          "display-name": "Password Recoveries per day",
+          "drilldown-config": [],
+          "height": 4,
+          "nls": {},
+          "parameters-map": {
+            "log-analytics-entity": "$(dashboard.params.log-analytics-entity-filter)",
+            "log-analytics-log-group-compartment": "$(dashboard.params.log-analytics-loggroup-filter)"
+          },
+          "row": 4,
+          "saved-search-id": "ocid1.managementsavedsearch.oc1..aaaaaaaaktop4ltwy4mi4swmhxksmurdvvip4s7v3zondf5qfylmv4yyzduq",
+          "state": "DEFAULT",
+          "ui-config": {},
+          "width": 6
+        },
+        {
+          "column": 0,
+          "data-config": [],
+          "display-name": "Account Locks per day",
+          "drilldown-config": [],
+          "height": 4,
+          "nls": {},
+          "parameters-map": {
+            "log-analytics-entity": "$(dashboard.params.log-analytics-entity-filter)",
+            "log-analytics-log-group-compartment": "$(dashboard.params.log-analytics-loggroup-filter)"
+          },
+          "row": 8,
+          "saved-search-id": "ocid1.managementsavedsearch.oc1..aaaaaaaaoaiprdzduajze6px7lgm2feoxqtluviuzx3uhimhcyn464nsqjaa",
+          "state": "DEFAULT",
+          "ui-config": {},
+          "width": 6
+        },
+        {
+          "column": 0,
+          "data-config": [],
+          "display-name": "New Users per day",
+          "drilldown-config": [],
+          "height": 4,
+          "nls": {},
+          "parameters-map": {
+            "log-analytics-entity": "$(dashboard.params.log-analytics-entity-filter)",
+            "log-analytics-log-group-compartment": "$(dashboard.params.log-analytics-loggroup-filter)"
+          },
+          "row": 4,
+          "saved-search-id": "ocid1.managementsavedsearch.oc1..aaaaaaaaauawjakrnwysbgy4zzolu5utdptlofqvxx46llijv6kjc2v5tpoq",
+          "state": "DEFAULT",
+          "ui-config": {},
+          "width": 6
+        },
+        {
+          "column": 6,
+          "data-config": [],
+          "display-name": "Unsuccessful Logins per day",
+          "drilldown-config": [],
+          "height": 4,
+          "nls": {},
+          "parameters-map": {
+            "log-analytics-entity": "$(dashboard.params.log-analytics-entity-filter)",
+            "log-analytics-log-group-compartment": "$(dashboard.params.log-analytics-loggroup-filter)"
+          },
+          "row": 0,
+          "saved-search-id": "ocid1.managementsavedsearch.oc1..aaaaaaaamtaeg6xjacns7vg5shwgih4u4ugdej5rzfv66etgt7gdtp6mdhva",
+          "state": "DEFAULT",
+          "ui-config": {},
+          "width": 6
+        },
+        {
+          "column": 6,
+          "data-config": [],
+          "display-name": "New Users by Source",
+          "drilldown-config": [],
+          "height": 4,
+          "nls": {},
+          "parameters-map": {
+            "log-analytics-entity": "$(dashboard.params.log-analytics-entity-filter)",
+            "log-analytics-log-group-compartment": "$(dashboard.params.log-analytics-loggroup-filter)"
+          },
+          "row": 8,
+          "saved-search-id": "ocid1.managementsavedsearch.oc1..aaaaaaaalyiq4b3q6lidhf3t3mydtxbex6z3prhc6r2ljw6a4345fyj7csnq",
+          "state": "DEFAULT",
+          "ui-config": {},
+          "width": 6
+        },
+        {
+          "column": 6,
+          "data-config": [],
+          "display-name": "New Users by Source Type",
+          "drilldown-config": [],
+          "height": 3,
+          "nls": {},
+          "parameters-map": {
+            "log-analytics-entity": "$(dashboard.params.log-analytics-entity-filter)",
+            "log-analytics-log-group-compartment": "$(dashboard.params.log-analytics-loggroup-filter)"
+          },
+          "row": 12,
+          "saved-search-id": "ocid1.managementsavedsearch.oc1..aaaaaaaa7ziobofzkkvm3ci4k7347pp3gjtuii7cewzarwxx4v6nuffpzn4a",
+          "state": "DEFAULT",
+          "ui-config": {},
+          "width": 6
+        },
+        {
+          "column": 0,
+          "data-config": [],
+          "display-name": "Events Generated by Users",
+          "drilldown-config": [],
+          "height": 3,
+          "nls": {},
+          "parameters-map": {
+            "log-analytics-entity": "$(dashboard.params.log-analytics-entity-filter)",
+            "log-analytics-log-group-compartment": "$(dashboard.params.log-analytics-loggroup-filter)"
+          },
+          "row": 12,
+          "saved-search-id": "ocid1.managementsavedsearch.oc1..aaaaaaaaqo7q7s4jjb5iaxklmsvy3bgbwyeqg27qldnqvr566yiiar7l4tjq",
+          "state": "DEFAULT",
+          "ui-config": {},
+          "width": 6
+        },
+        {
+          "column": 5,
+          "data-config": [],
+          "display-name": "Geostats for Unsuccessful Logins",
+          "drilldown-config": [],
+          "height": 5,
+          "nls": {},
+          "parameters-map": {
+            "log-analytics-entity": "$(dashboard.params.log-analytics-entity-filter)",
+            "log-analytics-log-group-compartment": "$(dashboard.params.log-analytics-loggroup-filter)"
+          },
+          "row": 19,
+          "saved-search-id": "ocid1.managementsavedsearch.oc1..aaaaaaaaj4jxcldhoxqwxdyqtmoj42u3k4byv2go7wfznujwm3t7fclls4sa",
+          "state": "DEFAULT",
+          "ui-config": {},
+          "width": 7
+        },
+        {
+          "column": 0,
+          "data-config": [],
+          "display-name": "Application Access",
+          "drilldown-config": [],
+          "height": 4,
+          "nls": {},
+          "parameters-map": {
+            "log-analytics-entity": "$(dashboard.params.log-analytics-entity-filter)",
+            "log-analytics-log-group-compartment": "$(dashboard.params.log-analytics-loggroup-filter)",
+            "log-analytics-log-set": "$(dashboard.params.log-analytics-logset-filter)"
+          },
+          "row": 15,
+          "saved-search-id": "ocid1.managementsavedsearch.oc1..aaaaaaaaxqeu4ph6mfheuglhvkscrjbn6ad3eajuv3xtmcn253ml3acqcz3a",
+          "state": "DEFAULT",
+          "ui-config": {},
+          "width": 6
+        },
+        {
+          "column": 6,
+          "data-config": [],
+          "display-name": "Application Role Privileges",
+          "drilldown-config": [],
+          "height": 4,
+          "nls": {},
+          "parameters-map": {
+            "log-analytics-entity": "$(dashboard.params.log-analytics-entity-filter)",
+            "log-analytics-log-group-compartment": "$(dashboard.params.log-analytics-loggroup-filter)",
+            "log-analytics-log-set": "$(dashboard.params.log-analytics-logset-filter)"
+          },
+          "row": 15,
+          "saved-search-id": "ocid1.managementsavedsearch.oc1..aaaaaaaampi5tnceumordnwmburcibgoerai7cqmukxtbmft2yrstyqqhvmq",
+          "state": "DEFAULT",
+          "ui-config": {},
+          "width": 6
+        },
+        {
+          "column": 0,
+          "data-config": [],
+          "display-name": "Dormant Users (30 Days)",
+          "drilldown-config": [],
+          "height": 5,
+          "nls": {},
+          "parameters-map": {
+            "log-analytics-entity": "$(dashboard.params.log-analytics-entity-filter)",
+            "log-analytics-log-group-compartment": "$(dashboard.params.log-analytics-loggroup-filter)"
+          },
+          "row": 19,
+          "saved-search-id": "ocid1.managementsavedsearch.oc1..aaaaaaaajjab5buyirt7xmskdq4dd4bwiwkx46yd5higy2dxll7gb4hbxv6a",
+          "state": "DEFAULT",
+          "ui-config": {},
+          "width": 5
+        }
+      ],
+      "type": "normal",
+      "ui-config": {
+        "isFilteringEnabled": false,
+        "isRefreshEnabled": true,
+        "isTimeRangeEnabled": true
+      }
+    }
+  ]
+}

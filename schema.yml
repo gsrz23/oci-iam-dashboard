@@ -1,0 +1,105 @@
+# Copyright (c) 2021 Oracle and/or its affiliates.
+# Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
+
+title: "OCI IAM Identity Domain Dashboards Deployment"
+stackDescription: "A stack to deploy Logging Analytics Dashboards for OCI IAM Identity Domains."
+schemaVersion: 1.1.0
+version: "0.0.1"
+locale: "en"
+
+variableGroups:
+  - title: "Environment Deployment"
+    variables:
+      - "region"
+      - "iam_dashboard_compartmentid"
+      - "iam_dashboard_domainname"
+
+  - title: "Service Connector for Logging Analytics"
+    variables:
+      - "create_service_connector_audit"
+      - "logging_analytics_log_group_name"
+      - "service_connector_audit_state"
+
+  - title: "Hidden Variables"
+    visible: false
+    variables:
+      - "tenancy_ocid"
+      - "user_ocid"
+      - "fingerprint"
+      - "private_key_path"
+      - "private_key_password"
+      - "iam_dashboard_import_custom_content_file"
+      - "iam_dashboard_custom_content_expect"
+      - "iam_dashboard_custom_content_is_overwrite"
+
+variables:
+  region:
+    type: oci:identity:region:name
+    title: "Deployment Region"
+    description: "Tenancy region to deploy IAM Identity Domain Dashboard.  Note: If not already, Logging Analytics will be onboarded on this region"
+    required: true
+
+  iam_dashboard_domainname:
+    type: string
+    title: "IAM Identity Domain Name"
+    description: "The Name of the existing OCI IAM Identity Domain to be used in the Dashboard queries"
+    required: true
+    default: Default
+
+  iam_dashboard_compartmentid:
+    type: oci:identity:compartment:id
+    title: "Dashboard Compartment Name"
+    description: "Compartment where the above OCI IAM Identity Domain resides and where the dashboard and saved queries will be deployed"
+    required: true
+
+  create_service_connector_audit:
+    type: boolean
+    title: "Create Service Connector for IAM Identity Domain Audit?"
+    description: "Creates a Service Connector for IAM Identity Domain Audit logs with Logging Analytics as the Target.  It's created in the same compartment as the Dasboard"
+    required: true
+    default: false
+
+  service_connector_audit_state:
+    type: enum
+    required: false
+    title: "Service Connector Hub State"
+    description: "State in which to create the Service Connector Hub for Audit logs."
+    default: INACTIVE
+    visible: create_service_connector_audit
+    enum:
+      - INACTIVE
+      - ACTIVE
+
+  logging_analytics_log_group_name:
+    type: string
+    required: true
+    default: "iam_identity_domain_audit"
+    description: "Name for the new Logging Analytics Log Group"
+    title: "Logging Analytic Log Group Name"
+    visible: create_service_connector_audit
+
+# Variables not required to display to user
+  user_ocid:
+    type: string
+
+  fingerprint:
+    type: string
+
+  private_key_path:
+    type: string
+
+  private_key_password:
+    type: password
+
+#  tenancy_ocid:
+#    type: string
+
+  iam_dashboard_custom_content_expect:
+    type: string
+
+  iam_dashboard_import_custom_content_file:
+    type: string 
+
+  iam_dashboard_custom_content_is_overwrite:
+    type: boolean
+  
