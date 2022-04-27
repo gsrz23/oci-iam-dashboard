@@ -105,6 +105,6 @@ resource "oci_identity_policy" "connectorpolicy_logginganalytics" {
   provider = oci.home
 
   statements = [
-    "allow any-user to {LOG_ANALYTICS_LOG_GROUP_UPLOAD_LOGS} in compartment id ${var.iam_dashboard_compartmentid} where all {request.principal.type='serviceconnector', target.loganalytics-log-group.id=${data.oci_log_analytics_log_analytics_log_group.iam_dashboard_log_group_details[count.index].id}, request.principal.compartment.id=${var.iam_dashboard_compartmentid}}"
+    "allow any-user to {LOG_ANALYTICS_LOG_GROUP_UPLOAD_LOGS} in compartment id ${var.iam_dashboard_compartmentid} where all {request.principal.type='serviceconnector', target.loganalytics-log-group.id='${data.oci_log_analytics_log_analytics_log_group.iam_dashboard_log_group_details[count.index].id}', request.principal.compartment.id='${var.iam_dashboard_compartmentid}'}"
   ]
 }
