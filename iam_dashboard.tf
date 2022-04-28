@@ -38,7 +38,13 @@ resource "oci_log_analytics_namespace" "iam_dashboard_namespace" {
   namespace = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.namespace
   is_onboarded = true
   compartment_id = var.tenancy_ocid
-  create_duration = "30s"
+}
+
+resource "null_resource" "wait_on_logan" {
+  depends_on = [module.lz_compartments]
+  provisioner "local-exec" {
+    command = "sleep 40" # Wait for login analytics to be available.
+  }
 }
 
 resource "oci_management_dashboard_management_dashboards_import" "iam_dashboard_import" {
