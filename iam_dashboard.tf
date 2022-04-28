@@ -114,7 +114,7 @@ resource "oci_sch_service_connector" "iam_dashboard_service_connector" {
 
 resource "oci_identity_policy" "connectorpolicy_logginganalytics" {
   count = (var.create_service_connector_audit  == true ) ? 1 : 0
-  name           = "IAM_Dashboard_ConnectorPolicy_LoggingAnalytics"
+  name           = "IAM_Dashboard_ConnectorPolicy_LoggingAnalytics_${var.iam_dashboard_domainname}"
   description    = "Policy to allow Service Connector to upload logs to a Logging Analytics Log Group"
   compartment_id = var.iam_dashboard_compartmentid
   provider = oci.home
