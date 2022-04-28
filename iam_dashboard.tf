@@ -62,7 +62,7 @@ resource "oci_log_analytics_log_analytics_import_custom_content" "iam_dashboard_
     #Required
     import_custom_content_file = var.iam_dashboard_import_custom_content_file
     #namespace = oci_log_analytics_namespace.iam_dashboard_namespace.namespace
-    namespace = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded ? data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.namespace : oci_log_analytics_namespace.iam_dashboard_namespace[count.index].namespace
+    namespace = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded ? data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.namespace : oci_log_analytics_namespace.iam_dashboard_namespace.0.namespace
     #Optional
     expect = var.iam_dashboard_custom_content_expect
     is_overwrite = var.iam_dashboard_custom_content_is_overwrite
