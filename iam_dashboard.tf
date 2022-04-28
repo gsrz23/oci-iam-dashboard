@@ -35,7 +35,7 @@ data "oci_log_analytics_namespaces" "iam_dashboard_namespaces" {
 
 resource "oci_log_analytics_namespace" "iam_dashboard_namespace" {
   count = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded ? 0 : 1
-  namespace = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.namespace
+  namespace = data.oci_objectstorage_namespace.ns
   is_onboarded = true
   compartment_id = var.tenancy_ocid
 }
@@ -48,19 +48,21 @@ resource "null_resource" "wait_on_logan" {
 }
 
 resource "oci_management_dashboard_management_dashboards_import" "iam_dashboard_import" {
-    count = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded ? 0 : 1
+    #count = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded ? 0 : 1
+    depends_on = [
+      oci_log_analytics_log_analytics_import_custom_content.iam_dashboard_import_custom_content
+    ]
     import_details = local.iam_dashboard_details
     #import_details_file = "/Users/gsaurez/test.json"
 }
 
 resource "oci_log_analytics_log_analytics_import_custom_content" "iam_dashboard_import_custom_content" {
     # = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded ? 0 : 1
-    depends_on = [
-      null_resource.wait_on_logan
-    ]
+
     #Required
     import_custom_content_file = var.iam_dashboard_import_custom_content_file
-    namespace = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.namespace
+    #namespace = oci_log_analytics_namespace.iam_dashboard_namespace.namespace
+    namespace = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded ? data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.namespace : oci_log_analytics_namespace.iam_dashboard_namespace.namespace
     #Optional
     expect = var.iam_dashboard_custom_content_expect
     is_overwrite = var.iam_dashboard_custom_content_is_overwrite
@@ -69,21 +71,23 @@ resource "oci_log_analytics_log_analytics_import_custom_content" "iam_dashboard_
 # Create a log group with required parameters
 resource "oci_log_analytics_log_analytics_log_group" "iam_dashboard_log_group" {
 
-  count = (var.create_service_connector_audit  == true && data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded) ? 1 : 0
+  count = (var.create_service_connector_audit  == true ) ? 1 : 0
   compartment_id             = var.iam_dashboard_compartmentid
-  namespace                  = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.namespace
+  #namespace                  = oci_log_analytics_namespace.iam_dashboard_namespace.namespace
+  namespace = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded ? data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.namespace : oci_log_analytics_namespace.iam_dashboard_namespace.namespace
   display_name               = var.logging_analytics_log_group_name
 }
 
 # Get details of above created log group with required parameters
 data "oci_log_analytics_log_analytics_log_group" "iam_dashboard_log_group_details" {
-  count = (var.create_service_connector_audit  == true && data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded) ? 1 : 0
-  namespace                  = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.namespace
+  count = (var.create_service_connector_audit  == true ) ? 1 : 0
+  #namespace                  = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.namespace
+  namespace = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded ? data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.namespace : oci_log_analytics_namespace.iam_dashboard_namespace.namespace
   log_analytics_log_group_id = oci_log_analytics_log_analytics_log_group.iam_dashboard_log_group[count.index].id
 }
 
 resource "oci_sch_service_connector" "iam_dashboard_service_connector" {
-  count = (var.create_service_connector_audit  == true && data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded) ? 1 : 0
+  count = (var.create_service_connector_audit  == true ) ? 1 : 0
   compartment_id = var.iam_dashboard_compartmentid
   #defined_tags  = {"${oci_identity_tag_namespace.tag-namespace1.name}.${oci_identity_tag.tag1.name}" = "updatedValue"}
   description    = "Used to populate Logging Analytics with OCI Audit Logs"
@@ -108,7 +112,7 @@ resource "oci_sch_service_connector" "iam_dashboard_service_connector" {
 }
 
 resource "oci_identity_policy" "connectorpolicy_logginganalytics" {
-  count = (var.create_service_connector_audit  == true && data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded) ? 1 : 0
+  count = (var.create_service_connector_audit  == true ) ? 1 : 0
   name           = "IAM_Dashboard_ConnectorPolicy_LoggingAnalytics"
   description    = "Policy to allow Service Connector to upload logs to a Logging Analytics Log Group"
   compartment_id = var.iam_dashboard_compartmentid
