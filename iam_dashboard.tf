@@ -41,7 +41,7 @@ resource "oci_log_analytics_namespace" "iam_dashboard_namespace" {
 }
 
 resource "null_resource" "wait_on_logan" {
-  depends_on = [module.lz_compartments]
+  depends_on = [oci_log_analytics_namespace.iam_dashboard_namespace]
   provisioner "local-exec" {
     command = "sleep 40" # Wait for login analytics to be available.
   }
