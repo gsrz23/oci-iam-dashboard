@@ -73,7 +73,7 @@ data "oci_log_analytics_log_analytics_log_group" "iam_dashboard_log_group_detail
 }
 
 resource "oci_sch_service_connector" "iam_dashboard_service_connector" {
-  count = (var.create_service_connector_audit  == true ) ? 1 : 0
+  count = (var.create_service_connector_audit  == true && data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded) ? 1 : 0
   compartment_id = var.iam_dashboard_compartmentid
   #defined_tags  = {"${oci_identity_tag_namespace.tag-namespace1.name}.${oci_identity_tag.tag1.name}" = "updatedValue"}
   description    = "Used to populate Logging Analytics with OCI Audit Logs"
@@ -98,7 +98,7 @@ resource "oci_sch_service_connector" "iam_dashboard_service_connector" {
 }
 
 resource "oci_identity_policy" "connectorpolicy_logginganalytics" {
-  count = (var.create_service_connector_audit  == true ) ? 1 : 0
+  count = (var.create_service_connector_audit  == true && data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded) ? 1 : 0
   name           = "IAM_Dashboard_ConnectorPolicy_LoggingAnalytics"
   description    = "Policy to allow Service Connector to upload logs to a Logging Analytics Log Group"
   compartment_id = var.iam_dashboard_compartmentid
