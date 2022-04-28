@@ -35,12 +35,13 @@ data "oci_log_analytics_namespaces" "iam_dashboard_namespaces" {
 
 resource "oci_log_analytics_namespace" "iam_dashboard_namespace" {
   count = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded ? 0 : 1
-  namespace = data.oci_objectstorage_namespace.ns
+  namespace = data.oci_objectstorage_namespace.ns.namespace
   is_onboarded = true
   compartment_id = var.tenancy_ocid
 }
 
 resource "null_resource" "wait_on_logan" {
+  count = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded ? 0 : 1
   depends_on = [oci_log_analytics_namespace.iam_dashboard_namespace]
   provisioner "local-exec" {
     command = "sleep 40" # Wait for login analytics to be available.
