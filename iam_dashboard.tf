@@ -54,7 +54,10 @@ resource "oci_management_dashboard_management_dashboards_import" "iam_dashboard_
 }
 
 resource "oci_log_analytics_log_analytics_import_custom_content" "iam_dashboard_import_custom_content" {
-    count = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded ? 0 : 1
+    # = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded ? 0 : 1
+    depends_on = [
+      null_resource.wait_on_logan
+    ]
     #Required
     import_custom_content_file = var.iam_dashboard_import_custom_content_file
     namespace = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.namespace
