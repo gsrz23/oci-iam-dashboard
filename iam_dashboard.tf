@@ -76,7 +76,7 @@ resource "oci_log_analytics_log_analytics_log_group" "iam_dashboard_log_group" {
   compartment_id             = var.iam_dashboard_compartmentid
   #namespace                  = oci_log_analytics_namespace.iam_dashboard_namespace.namespace
   namespace = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.is_onboarded ? data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.namespace : oci_log_analytics_namespace.iam_dashboard_namespace[count.index].namespace
-  display_name               = var.logging_analytics_log_group_name
+  display_name               = "${var.logging_analytics_log_group_name}_${var.iam_dashboard_domainname}"
 }
 
 # Get details of above created log group with required parameters
