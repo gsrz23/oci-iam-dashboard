@@ -38,6 +38,7 @@ resource "oci_log_analytics_namespace" "iam_dashboard_namespace" {
   namespace = data.oci_log_analytics_namespaces.iam_dashboard_namespaces.namespace_collection.0.items.0.namespace
   is_onboarded = true
   compartment_id = var.tenancy_ocid
+  create_duration = "30s"
 }
 
 resource "oci_management_dashboard_management_dashboards_import" "iam_dashboard_import" {
