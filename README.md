@@ -8,7 +8,7 @@ This repository provides an OCI Logging Analytics Dashboard with some sample wid
 
 ## Overview
 
-The Audit Logs for OCI IAM Identity Domains can be obtained directly from the OCI Audit Service along with the events from other OCI Services.  The IDCS Rest APIs can still be used, but the Audit Service is more convenient since Audit logs can be easily pushed to Streaming, Object Storage, etc.  The solution in this repository deploys SCH to send OCI Audit Logs to Logging Analytics.  It also deploys a Dashboard to visualize the audit logs for OCI IAM Identity Domains.
+The Audit Logs for OCI IAM Identity Domains can be obtained directly from the OCI Audit Service along with the events from other OCI Services.  The IDCS Rest APIs can still be used, but the Audit Service is more convenient since Audit logs can be easily pushed to Streaming, Object Storage, etc.  The solution in this repository deploys Service Connector Hub to send OCI Audit Logs to Logging Analytics.  It also deploys a sample Dashboard to visualize the audit logs for OCI IAM Identity Domains.
 
 ![Dashboard1](images/Dashboard1.png)
 ![Dashboard3](images/Dashboard3.png)
