@@ -8,7 +8,7 @@ version: "0.0.1"
 locale: "en"
 
 variableGroups:
-  - title: "Environment Deployment"
+  - title: "OCI IAM Identity Domain Information"
     variables:
       - "region"
       - "iam_dashboard_compartmentid"
@@ -33,12 +33,6 @@ variableGroups:
       - "iam_dashboard_custom_content_is_overwrite"
 
 variables:
-  region:
-    type: oci:identity:region:name
-    title: "Deployment Region"
-    description: "Tenancy region to deploy IAM Identity Domain Dashboard.  Note: If not already, Logging Analytics will be onboarded on this region"
-    required: true
-
   iam_dashboard_domainname:
     type: string
     title: "IAM Identity Domain Name"
@@ -46,9 +40,15 @@ variables:
     required: true
     default: Default
 
+  region:
+    type: oci:identity:region:name
+    title: "Identity Domain Region"
+    description: "Base Region of the IAM Identity Domain.  Note: Logging Analytics will be onboarded on this region"
+    required: true
+
   iam_dashboard_compartmentid:
     type: oci:identity:compartment:id
-    title: "Dashboard Compartment Name"
+    title: "Identity Domain Compartment Name"
     description: "Compartment where the above OCI IAM Identity Domain resides and where the dashboard and saved queries will be deployed"
     required: true
 
