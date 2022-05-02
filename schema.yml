@@ -49,7 +49,7 @@ variables:
   iam_dashboard_compartmentid:
     type: oci:identity:compartment:id
     title: "Identity Domain Compartment Name"
-    description: "Compartment where the above OCI IAM Identity Domain resides and where the dashboard and saved queries will be deployed"
+    description: "Compartment where the OCI IAM Identity Domain resides and where the dashboard and saved queries will be deployed"
     required: true
 
   create_service_connector_audit:
@@ -63,7 +63,7 @@ variables:
     type: enum
     required: false
     title: "Service Connector Hub State"
-    description: "State in which to create the Service Connector Hub for Audit logs."
+    description: "Initial state in which to create the Service Connector Hub for Audit logs."
     default: INACTIVE
     visible: create_service_connector_audit
     enum:
@@ -74,7 +74,7 @@ variables:
     type: string
     required: true
     default: "iam_identity_domain_audit"
-    description: "Name for the new Logging Analytics Log Group"
+    description: "Name of the Logging Analytics Log Group that will have the Audit Logs"
     title: "Logging Analytic Log Group Name"
     visible: create_service_connector_audit
 
