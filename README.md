@@ -48,7 +48,7 @@ A provisioned Dashboard can't be modified with terraform, any modification to th
 
 Some considerations when using the terraform *destroy* command:
 - The Logging Analytics dashboard and customizations are removed from the terraform state but not from Logging Analytics.
-- A Dashboard and its Saved Queries has to be removed manually from the console or with API calls.
+- A Dashboard and its Saved Queries have to be removed manually from the console or with API calls.
 - The Logging Analytics Log Group won't be destroyed if it contains data.
 - Logging Analytics service is not offboarded with the destroy command.
 - To remove the Logging Analytics customizations do the following from the Logging Analytics Administration Menu:
