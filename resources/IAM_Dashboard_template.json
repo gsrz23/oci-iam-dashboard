@@ -152,7 +152,7 @@
           "type": "WIDGET_SHOW_IN_DASHBOARD",
           "ui-config": {
             "enableWidgetInApp": true,
-            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = \"${var.iam_dashboard_domainname}\" and 'IAM EventID' = admin.user.create.success | stats count by 'IAM Actor Type'",
+            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = '\"${var.iam_dashboard_domainname}\"' and 'IAM EventID' = admin.user.create.success | stats count by 'IAM Actor Type'",
             "scopeFilters": {
               "Entity": {
                 "flags": {
