@@ -12,7 +12,7 @@ variableGroups:
     variables:
       - "region"
       - "iam_dashboard_compartmentid"
-      - "iam_dashboard_domainname"
+      - "iam_dashboard_domain_ocid"
 
   - title: "Service Connector for Logging Analytics"
     variables:
