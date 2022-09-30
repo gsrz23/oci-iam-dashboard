@@ -152,7 +152,7 @@
           "type": "WIDGET_SHOW_IN_DASHBOARD",
           "ui-config": {
             "enableWidgetInApp": true,
-            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = ${var.iam_dashboard_domainname} and 'IAM EventID' = admin.user.create.success | stats count by 'IAM Actor Type'",
+            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = '${var.iam_dashboard_domainname}' and 'IAM EventID' = admin.user.create.success | stats count by 'IAM Actor Type'",
             "scopeFilters": {
               "Entity": {
                 "flags": {
@@ -268,7 +268,7 @@
           "type": "WIDGET_SHOW_IN_DASHBOARD",
           "ui-config": {
             "enableWidgetInApp": true,
-            "queryString": "Time between * and * and 'IAM Domain Name' = ${var.iam_dashboard_domainname} and 'IAM EventID' = sso.session.create.success | stats latest('Event End Time') as 'Last Login' by 'User Name' | where 'Last Login' < dateRelative(30day) | sort -'Last Login'",
+            "queryString": "Time between * and * and 'IAM Domain Name' = '${var.iam_dashboard_domainname}' and 'IAM EventID' = sso.session.create.success | stats latest('Event End Time') as 'Last Login' by 'User Name' | where 'Last Login' < dateRelative(30day) | sort -'Last Login'",
             "scopeFilters": {
               "Entity": {
                 "flags": {
@@ -510,7 +510,7 @@
           "ui-config": {
             "enableWidgetInApp": true,
             "internalKey": "SEARCHaaaaaaaaqobrfkz6rfxvcy52d2hdxnj3ufwke4tz2bndz5eb5jtxa45lqphq",
-            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM EventID' = sso.session.create.success and 'IAM Domain Name' = ${var.iam_dashboard_domainname} | fields -Entity, -'Entity Type', -'Host Name (Server)', -'Problem Priority', -Label, -'Log Source', 'User Name', -'IAM Domain Name' | timestats span = 1day count",
+            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM EventID' = sso.session.create.success and 'IAM Domain Name' = '${var.iam_dashboard_domainname}' | fields -Entity, -'Entity Type', -'Host Name (Server)', -'Problem Priority', -Label, -'Log Source', 'User Name', -'IAM Domain Name' | timestats span = 1day count",
             "scopeFilters": {
               "Entity": {
                 "flags": {
@@ -606,7 +606,7 @@
           "ui-config": {
             "enableWidgetInApp": true,
             "internalKey": "SEARCHaaaaaaaavcqltlgtxccrimky2pfft6ihm2ltrnv3vxrv3iled7x4stjb4oza",
-            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM EventID' = sso.authentication.failure and 'IAM Domain Name' = ${var.iam_dashboard_domainname} | fields -Entity, -'Entity Type', -'Host Name (Server)', -'Problem Priority', -Label, -'Log Source', 'User Name', -'IAM Domain Name' | timestats span = 1day count",
+            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM EventID' = sso.authentication.failure and 'IAM Domain Name' = '${var.iam_dashboard_domainname}' | fields -Entity, -'Entity Type', -'Host Name (Server)', -'Problem Priority', -Label, -'Log Source', 'User Name', -'IAM Domain Name' | timestats span = 1day count",
             "scopeFilters": {
               "Entity": {
                 "flags": {
@@ -859,7 +859,7 @@
           "screen-image": " ",
           "type": "WIDGET_SHOW_IN_DASHBOARD",
           "ui-config": {
-            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = ${var.iam_dashboard_domainname} and 'IAM EventID' in (admin.me.password.reset.request.success, admin.me.password.reset.success) | timestats span = 1day count",
+            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = '${var.iam_dashboard_domainname}' and 'IAM EventID' in (admin.me.password.reset.request.success, admin.me.password.reset.success) | timestats span = 1day count",
             "scopeFilters": {
               "Entity": {
                 "flags": {
@@ -1021,7 +1021,7 @@
           "ui-config": {
             "enableWidgetInApp": true,
             "internalKey": "SEARCHaaaaaaaabpo6t3zwkglq7oy6y4fb52iqi2ou3k4ibyl6pv7bzsutwlwlqmma",
-            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = ${var.iam_dashboard_domainname} and 'IAM EventID' in (sso.authentication.failure, sso.session.create.success) | fields -Entity, -'Entity Type', -'Host Name (Server)', -'Problem Priority', -Label, -'Log Source', 'User Name', 'IAM EventID', 'IAM SSO RP' as Application, 'IAM Domain Name' | timestats count as logrecords by Application | sort -logrecords",
+            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = '${var.iam_dashboard_domainname}' and 'IAM EventID' in (sso.authentication.failure, sso.session.create.success) | fields -Entity, -'Entity Type', -'Host Name (Server)', -'Problem Priority', -Label, -'Log Source', 'User Name', 'IAM EventID', 'IAM SSO RP' as Application, 'IAM Domain Name' | timestats count as logrecords by Application | sort -logrecords",
             "scopeFilters": {
               "Entity": {
                 "flags": {
@@ -1179,7 +1179,7 @@
           "type": "WIDGET_SHOW_IN_DASHBOARD",
           "ui-config": {
             "enableWidgetInApp": true,
-            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = ${var.iam_dashboard_domainname} and 'IAM EventID' in (admin.approle.add.member.success, admin.approle.remove.member.success) | fields -Entity, -'Entity Type', -'Host Name (Server)', -'Problem Priority', -Label, -'Log Source', -'IAM EventID', 'IAM Actor Name', 'IAM AppRole App' as App, 'IAM Admin Target Name', 'IAM Admin Target Type', 'IAM Domain Name', 'IAM Resource Name' as 'App Role' | timestats count as logrecords by App | sort -logrecords",
+            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = '${var.iam_dashboard_domainname}' and 'IAM EventID' in (admin.approle.add.member.success, admin.approle.remove.member.success) | fields -Entity, -'Entity Type', -'Host Name (Server)', -'Problem Priority', -Label, -'Log Source', -'IAM EventID', 'IAM Actor Name', 'IAM AppRole App' as App, 'IAM Admin Target Name', 'IAM Admin Target Type', 'IAM Domain Name', 'IAM Resource Name' as 'App Role' | timestats count as logrecords by App | sort -logrecords",
             "scopeFilters": {
               "Entity": {
                 "flags": {
@@ -1301,7 +1301,7 @@
           "ui-config": {
             "enableWidgetInApp": true,
             "internalKey": "ocid1.managementsavedsearch.oc1..aaaaaaaalyiq4b3q6lidhf3t3mydtxbex6z3prhc6r2ljw6a4345fyj7csnq",
-            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = ${var.iam_dashboard_domainname} and 'IAM EventID' = admin.user.create.success | fields 'User Name' as 'Created By' | stats count by 'IAM Actor Name'",
+            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = '${var.iam_dashboard_domainname}' and 'IAM EventID' = admin.user.create.success | fields 'User Name' as 'Created By' | stats count by 'IAM Actor Name'",
             "scopeFilters": {
               "Entity": {
                 "flags": {
@@ -1383,7 +1383,7 @@
           "ui-config": {
             "enableWidgetInApp": true,
             "internalKey": "ocid1.managementsavedsearch.oc1..aaaaaaaaauawjakrnwysbgy4zzolu5utdptlofqvxx46llijv6kjc2v5tpoq",
-            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM EventID' = admin.user.create.success and 'IAM Domain Name' = ${var.iam_dashboard_domainname} | fields -Entity, -'Entity Type', -'Host Name (Server)', -'Problem Priority', -Label, -'Log Source', 'IAM Resource Name' as 'New User' | timestats span = 1day count",
+            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM EventID' = admin.user.create.success and 'IAM Domain Name' = '${var.iam_dashboard_domainname}' | fields -Entity, -'Entity Type', -'Host Name (Server)', -'Problem Priority', -Label, -'Log Source', 'IAM Resource Name' as 'New User' | timestats span = 1day count",
             "scopeFilters": {
               "Entity": {
                 "flags": {
@@ -1499,7 +1499,7 @@
           "type": "WIDGET_SHOW_IN_DASHBOARD",
           "ui-config": {
             "enableWidgetInApp": true,
-            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = ${var.iam_dashboard_domainname} and 'IAM Actor Type' = user and 'IAM EventID' like 'admin*success' | stats count as 'events generated by users' by 'User Name'",
+            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = '${var.iam_dashboard_domainname}' and 'IAM Actor Type' = user and 'IAM EventID' like 'admin*success' | stats count as 'events generated by users' by 'User Name'",
             "scopeFilters": {
               "Entity": {
                 "flags": {
@@ -1593,7 +1593,7 @@
           "ui-config": {
             "enableWidgetInApp": true,
             "internalKey": "ocid1.managementsavedsearch.oc1..aaaaaaaaoaiprdzduajze6px7lgm2feoxqtluviuzx3uhimhcyn464nsqjaa",
-            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = ${var.iam_dashboard_domainname} and 'IAM EventID' = admin.me.locked.success | fields -Entity, -'Entity Type', -'Host Name (Server)', -'Problem Priority', -Label, -'Log Source', 'IAM Resource Name' as 'Locked User' | timestats span = 1day count",
+            "queryString": "'Log Source' = 'OCI Audit Logs' and 'IAM Domain Name' = '${var.iam_dashboard_domainname}' and 'IAM EventID' = admin.me.locked.success | fields -Entity, -'Entity Type', -'Host Name (Server)', -'Problem Priority', -Label, -'Log Source', 'IAM Resource Name' as 'Locked User' | timestats span = 1day count",
             "scopeFilters": {
               "Entity": {
                 "flags": {
