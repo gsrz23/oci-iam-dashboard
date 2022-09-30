@@ -1,5 +1,5 @@
 # oci-iam-dashboard
-[![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?zipUrl=https://github.com/gsrz23/oci-iam-dashboard/archive/refs/heads/main.zip)
+[![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?zipUrl=https://github.com/gsrz23/oci-iam-dashboard/archive/refs/heads/v1.1.zip)
 
 This repository provides an OCI Logging Analytics Dashboard with some sample widgets to monitor and visualize audit Events for OCI IAM Identity Domains.  The Dashboard will only work in OCI Tenancies that [support IAM Identity Domains](https://docs.oracle.com/en-us/iaas/Content/Identity/getstarted/identity-domains.htm#identity_documentation__updated-identity-domains).  
 
