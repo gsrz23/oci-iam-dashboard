@@ -30,7 +30,7 @@ The following resources are provisioned with terraform or Resource Manager
 
 The following variables are used for deployment:
 
-- **iam_dashboard_domainname** is the Name of the existing OCI IAM Identity Domain to be used in the Dashboard queries.  The default value is *Default*
+- **iam_dashboard_domain_ocid** is the OCID of the existing OCI IAM Identity Domain to be used in the Dashboard queries.  
 - **region** is Base Region of the IAM Identity Domain.  Logging Analytics will be onboarded in this region if needed.
 - **iam_dashboard_compartmentid** is the compartment ID where the OCI IAM Identity Domain resides and where the dashboard and saved queries are deployed.
 - **create_service_connector_audit** set to true if a SCH is needed to push OCI Audit Logs to Logging Analytics.  It's provisioned in the compartment *iam_dashboard_compartmentid*.  The default is *false*
