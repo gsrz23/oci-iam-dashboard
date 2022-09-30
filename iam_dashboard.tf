@@ -27,6 +27,10 @@ data "oci_identity_domain" "oci_dashboard_identity_domain" {
     domain_id = var.iam_dashboard_domain_ocid
 }
 
+output "domain_name" {
+  value = data.oci_identity_domain.oci_dashboard_identity_domain.display_name
+}
+
 output "audit_id" {
     value = data.oci_logging_log_groups.oci_log_groups.id
 }

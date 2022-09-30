@@ -38,7 +38,6 @@ variables:
     title: "IAM Identity Domain OCID"
     description: "The OCID of the existing OCI IAM Identity Domain to be used in the Dashboard queries"
     required: true
-    default: Default
 
   region:
     type: oci:identity:region:name
