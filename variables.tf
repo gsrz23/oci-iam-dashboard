@@ -7,7 +7,11 @@ variable "iam_dashboard_compartmentid" {
     type = string
   }
 
-variable "iam_dashboard_domainname" {
+#variable "iam_dashboard_domainname" {
+#    type = string
+#  }
+
+variable "iam_dashboard_domain_ocid" {
     type = string
   }
 
