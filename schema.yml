@@ -12,7 +12,7 @@ variableGroups:
     variables:
       - "region"
       - "iam_dashboard_compartmentid"
-      - "iam_dashboard_domainname"
+      - "iam_dashboard_domain_ocid"
 
   - title: "Service Connector for Logging Analytics"
     variables:
@@ -33,12 +33,11 @@ variableGroups:
       - "iam_dashboard_custom_content_is_overwrite"
 
 variables:
-  iam_dashboard_domainname:
+  iam_dashboard_domain_ocid:
     type: string
-    title: "IAM Identity Domain Name"
-    description: "The Name of the existing OCI IAM Identity Domain to be used in the Dashboard queries"
+    title: "IAM Identity Domain OCID"
+    description: "The OCID of the existing OCI IAM Identity Domain to be used in the Dashboard queries"
     required: true
-    default: Default
 
   region:
     type: oci:identity:region:name
